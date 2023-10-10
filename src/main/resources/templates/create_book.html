@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Library Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Library Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/books}">List of Books</a>
+      </li>
+    </ul>
+  </div>
+</nav><br><br>
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Add a new Book</h1>
+				<div class="card-body">
+					<form th:action"@{/books}" th:object="${library}" method="POST">
+						<div class="form-group">
+							<label>Book ID</label>
+							<input type="text" name="bookID" th:field="*{bookID}" class="form-control"
+								placeholder="Enter the Book ID" required/>
+						</div>
+						
+						<div class="form-group">
+							<label>Category</label>
+							
+							<select type="text" name="category" th:field="*{category}" class="form-control">
+								<option value="" hidden selected>Enter the category of the book</option>
+								<option value="Science-fiction">Science-fiction</option>
+								<option value="Poetry">Poetry</option>
+								<option value="Drama">Drama</option>
+								<option value="Biography">Biography</option>
+								<option value="Mystery">Mystery</option>
+								<option value="Fantasy">Fantasy</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label>Name of the Book</label>
+							<input type="text" name="bookName" th:field="*{bookName}" class="form-control"
+								placeholder="Enter the Name of the Book" required/>
+						</div>
+						
+						<div class="form-group">
+							<label>Name of the Author</label>
+							<input type="text" name="authorName" th:field="*{authorName}" class="form-control"
+								placeholder="Enter the Name of the Author" required/>
+						</div>
+						
+						<div class="form-group">
+							<label>Status of the Book</label>
+						
+							<select type="text" name="status" th:field="*{status}" class="form-control" required>
+								<option value="" hidden selected>Enter the Status</option>
+								<option value="Available">Available</option>
+								<option value="Not Available">Not Available</option>
+							</select>
+						</div>
+						
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Add</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
